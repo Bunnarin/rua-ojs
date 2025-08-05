@@ -7,7 +7,7 @@ services:
     image: mariadb:11.4
 #    env_file:
 #      - .env
-    container_name: "ojs_db_${COMPOSE_PROJECT_NAME:-demo}"
+    container_name: "ojs_db_rua"
     environment:
       MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD:-ojsPwd}"
       MYSQL_DATABASE: "${OJS_DB_NAME:-ojs}"
@@ -23,14 +23,14 @@ services:
     restart: unless-stopped
 
   ojs:
-    image: "pkpofficial/${OJS_IMAGE:-ojs}:${OJS_VERSION:-latest}"
+    image: "pkpofficial/ojs:latest"
 #    env_file:
 #      - .env
-    container_name: "ojs_app_${COMPOSE_PROJECT_NAME:-demo}"
-    hostname: "${COMPOSE_PROJECT_NAME:-demo}"
+    container_name: "ojs_app_rua"
+    hostname: "rua"
     ports:
-      - "${HTTP_PORT:-8081}:80"
-      - "${HTTPS_PORT:-443}:443"
+      - "8081:80"
+      - "443:443"
     volumes:
       - /etc/localtime:/etc/localtime
       - ./volumes/private:/var/www/files
@@ -45,4 +45,17 @@ services:
       - inside
     depends_on:
       - db
+    restart: unless-stopped
+  certbot:
+    build: ./certbot
+    environment:
+      EMAIL: ${CERTBOT_EMAIL}
+      DOMAIN: ${PROJECT_DOMAIN}
+    volumes:
+      - ./volumes/certbot:/etc/letsencrypt
+      - ./volumes/ojs/public:/vol/www
+    networks:
+      - inside
+    depends_on:
+      - ojs
     restart: unless-stopped
