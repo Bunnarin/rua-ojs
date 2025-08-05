@@ -23,9 +23,7 @@ services:
     restart: unless-stopped
 
   ojs:
-    image: "pkpofficial/ojs:latest"
-#    env_file:
-#      - .env
+    build: .
     container_name: "ojs_app_rua"
     environment:
       - SERVERNAME=${PROJECT_DOMAIN}

@@ -137,7 +137,7 @@ sitewide_privacy_statement = Off
 [database]
 
 driver = mysqli
-host = localhost
+host = db
 username = ojs
 password = ojs
 name = ojs
