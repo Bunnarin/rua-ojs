@@ -49,8 +49,8 @@ services:
   certbot:
     build: ./certbot
     environment:
-      EMAIL: ${CERTBOT_EMAIL}
-      DOMAIN: ${PROJECT_DOMAIN}
+      CERTBOT_EMAIL: ${CERTBOT_EMAIL}
+      PROJECT_DOMAIN: ${PROJECT_DOMAIN}
     volumes:
       - ./volumes/certbot:/etc/letsencrypt
       - ./volumes/ojs/public:/vol/www
