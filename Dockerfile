@@ -1,6 +1,6 @@
 # Start from the official OJS image
 # Be sure to use the specific version you are targeting
-FROM pkp/ojs:latest
+FROM pkp/ojs:3.4.0-5
 
 # Copy your corrected script into the image
 # This path is a common location for entrypoint scripts
