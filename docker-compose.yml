@@ -27,6 +27,8 @@ services:
 #    env_file:
 #      - .env
     container_name: "ojs_app_rua"
+    environment:
+      - SERVERNAME=${PROJECT_DOMAIN}
     hostname: "rua"
     ports:
       - "8081:80"
