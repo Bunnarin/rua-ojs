@@ -29,7 +29,7 @@
 installed = Off
 
 ; The canonical URL to the OJS installation (excluding the trailing slash)
-base_url = "http://pkp.sfu.ca/ojs"
+base_url = "rua.popok.uk"
 
 ; Session cookie name
 session_cookie_name = OJSSID
@@ -104,7 +104,7 @@ restful_urls = Off
 ; An empty string indicates that all hosts should be trusted (not recommended!)
 ; Example:
 ; allowed_hosts = '["myjournal.tld", "anotherjournal.tld", "mylibrary.tld"]'
-allowed_hosts = ''
+allowed_hosts = '["rua.popok.uk"]'
 
 ; Allow the X_FORWARDED_FOR header to override the REMOTE_ADDR as the source IP
 ; Set this to "On" if you are behind a reverse proxy and you control the
@@ -247,10 +247,10 @@ umask = 0022
 
 ; Force SSL connections site-wide and also sets the "Secure" flag for session cookies
 ; See https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#secure
-force_ssl = Off
+force_ssl = On
 
 ; Force SSL connections for login only
-force_login_ssl = Off
+force_login_ssl = On
 
 ; This check will invalidate a session if the user's IP address changes.
 ; Enabling this option provides some additional security, but may cause
@@ -288,6 +288,7 @@ allowed_html = "a[href|target|title],em,strong,cite,code,ul,ol,li[class],dl,dt,d
 ;;;;;;;;;;;;;;;;;;
 
 [email]
+default = sendmail
 
 ; Use SMTP for sending mail instead of mail()
 ; smtp = On
